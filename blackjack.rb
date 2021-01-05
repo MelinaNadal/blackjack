@@ -1,8 +1,9 @@
-require 'rspec'
+require 'Colorize'
 class Card
 
-	attr_reader :suit, :value
-	def initialize(suit, value)
+	attr_reader :face, :suit, :value
+	def initialize(face, suit, value)
+		@face = face
 		@suit = suit
 		@value = value
 	end
@@ -34,3 +35,14 @@ class Deck
 			["J", "Q", "K", "A"].each do |facecard|
 				cards << Card.new(suit, facecard)
 			end
+			class Player 
+				attr_accessor :name, :hand, :bankroll, :total
+				def initialize name, hand, bankroll, total
+					@name = name
+					@hand = []
+					@bankroll = bankroll
+					@total = total
+				end
+			end
+			player = Player.new "Player", [], 100, 0
+			the_house = Player.new "The House", [], 10000, 0		
