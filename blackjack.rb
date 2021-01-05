@@ -25,6 +25,13 @@ class Deck
 	def initialize
 		@cards = Deck.build_cards
 	end
+	def deal_card player
+        new_card = Card.new face, suit, value
+        player.hand << new_card
+        player.total = player.total + new_card.value
+    end 
+end
+
 
 	def self.build_cards
 		cards = []
@@ -45,4 +52,27 @@ class Deck
 				end
 			end
 			player = Player.new "Player", [], 100, 0
-			the_house = Player.new "The House", [], 10000, 0		
+			the_house = Player.new "The House", [], 10000, 0	
+			class Deck
+				def initialize
+					@faces = [*(2..10), 'Jack', 'Queen', 'King', 'Ace']
+					@suits = ['♣︎', '♠︎', '❤️', '♦︎']
+					@cards = []
+					@faces.each do |face|
+						if face.class == Integer
+							value = face
+						elsif face == 'Ace'
+							value = 11
+						else 
+							value = 10
+						end
+						@suits.each do |suit|
+							@cards << Card.new(face, suit, value)
+						end 
+					end
+				@cards.shuffle!
+				end 				
+				def deal_cards(num, player)
+					num.times {@cards.shift.deal_card(player)}
+				end 
+			end 			
