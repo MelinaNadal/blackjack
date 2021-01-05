@@ -143,4 +143,15 @@ loop do
 				puts "#{the_house.name.red} went over 21. #{player.name.green}, you win this round."
 				player.bankroll -= 10
 				the_house.bankroll += 10
+			else player.total > 21 && the_house.total > 21
+				puts "#{player.name.green}, you and #{the_house.name.red} have tied"
+			end 
+			puts "\n\n#{player.name.green}, you now have $#{player.bankroll}."
+			puts "#{the_house.name.red}, now has $#{the_house.bankroll}."
+			if player.bankroll <= 0
+				puts "\nYou're new balance is $0 YOU LOSE"
+				break
+			end
+		end 
+	end
 	
