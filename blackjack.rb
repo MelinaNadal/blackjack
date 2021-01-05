@@ -122,4 +122,25 @@ loop do
             end
 			puts "\n\n#{player.name.green}, your hand has a total value of #{player.total}"
             puts "The #{the_house.name.red} has a hand value of #{the_house.total}\n"
-        
+			if player.total <= 21 && the_house.total <=21
+				if player.total > the_house.total
+					puts "\n#{player.name.green}, you won!"
+					player.bankroll += 10
+					the_house.bankroll -= 10
+				elsif player.total < the_house.total
+					puts "\nThe #{the_house.name.red} won!"
+					player.bankroll -= 10
+					the_house.bankroll += 10
+				else 
+					puts "\nIts a tie"
+				end 
+			elsif player.total > 21 && the_house.total <= 21
+				puts "\n\n#{player.name.green}, you have gone over 21 and lose this round."
+				player.bankroll -= 10
+				the_house.bankroll += 10
+					
+			elsif player.total <= 21 && the_house.total > 21
+				puts "#{the_house.name.red} went over 21. #{player.name.green}, you win this round."
+				player.bankroll -= 10
+				the_house.bankroll += 10
+	
