@@ -84,3 +84,23 @@ end
 puts "\nAre you Ready to gamble #{name.green}!?"
 
 player.name="#{name.green}"
+
+loop do
+    puts "(D)eal or (Q)uit"
+    play = gets.chomp.downcase
+    if play == "q"
+        puts "See ya next time"
+        break
+    else 
+        puts "\nDealing... "
+        player.hand.clear
+        player.total = 0 
+        the_house.hand.clear
+        the_house.total = 0
+
+		puts "#{player.name.green}, you were dealt:"
+		deck = Deck.new
+        deck.deal_cards(2, player)
+        puts "The #{player.hand[0].face} of #{player.hand[0].suit} (#{player.hand[0].value})"
+        puts "The #{player.hand[1].face} of #{player.hand[1].suit} (#{player.hand[1].value})"
+        
