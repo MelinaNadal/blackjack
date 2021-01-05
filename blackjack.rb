@@ -75,4 +75,12 @@ end
 				def deal_cards(num, player)
 					num.times {@cards.shift.deal_card(player)}
 				end 
-			end 			
+			end 		
+			def welcome(name)
+				print(name)
+				gets
+			end 	
+			name = welcome("This is  to Ruby Blackjack! What's your name? ").chomp
+puts "\nAre you Ready to gamble #{name.green}!?"
+
+player.name="#{name.green}"
