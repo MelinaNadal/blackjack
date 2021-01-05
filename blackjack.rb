@@ -102,5 +102,24 @@ loop do
 		deck = Deck.new
         deck.deal_cards(2, player)
         puts "The #{player.hand[0].face} of #{player.hand[0].suit} (#{player.hand[0].value})"
-        puts "The #{player.hand[1].face} of #{player.hand[1].suit} (#{player.hand[1].value})"
+		puts "The #{player.hand[1].face} of #{player.hand[1].suit} (#{player.hand[1].value})"
+		deck.deal_cards(2, the_house)
+        puts "\n#{the_house.name.red}"
+        puts "The #{the_house.hand[0].face} of #{the_house.hand[0].suit} (#{the_house.hand[0].value})"
+
+        until player.total >= 21 do
+            puts "\n\n(H)it or (S)tand?"
+            hit = gets.chomp.downcase
+                if hit == 'h'
+                    deck.deal_cards(1, player)
+                    puts "\n#{player.name.green}, your new card is:"
+                    puts "The #{player.hand[0].face} of #{player.hand[0].suit} (#{player.hand[0].value})\n"
+                    puts "The total in your hand is: #{player.total}"
+				    puts "\n\nThe dealer has one card showing: The #{the_house.hand[0].face} of #{the_house.hand[0].suit} (#{the_house.hand[0].value})"
+                else
+                    break
+                end
+            end
+			puts "\n\n#{player.name.green}, your hand has a total value of #{player.total}"
+            puts "The #{the_house.name.red} has a hand value of #{the_house.total}\n"
         
